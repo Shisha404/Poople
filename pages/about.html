@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О компании Poople</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        (function(){
+            var t = localStorage.getItem('poople_theme');
+            if (t) { document.documentElement.setAttribute('data-theme', t); }
+        })();
+    </script>
+</head>
+<body>
+    <nav>
+        <div><a href="../index.html">Главная</a></div>
+        <div class="nav-right">
+            <ul>
+            <li><a href="blog.html">Новости</a></li>
+            <li><a href="products.html">Продукты</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="awards.html">Награды</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+        </ul>
+            <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Переключить тему">🌙</button>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="glow-circles">
+            <span class="circle circle-1"></span>
+            <span class="circle circle-2"></span>
+            <span class="circle circle-3"></span>
+        </div>
+        <div class="hero-title">О компании Poople</div>
+    </section>
+
+    <section class="about-section">
+        <h2>История компании Poople</h2>
+        <p>Poople была основана в 2015 году Михаилом Алексеевичем Садовым. Основатели стремились создать компанию, которая бы сочетала инновационные технологии с качественным обслуживанием клиентов. Сегодня Poople известна своими премиальными смартфонами и аксессуарами.</p>
+        <h2>Основатель компании</h2>
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Михаил Алексеевич Садовский">
+            <h3>Михаил Алексеевич Садовский</h3>
+            <p>Основатель и генеральный директор компании Poople. Его страсть к технологиям и стремление сделать мир лучше через инновации стали движущей силой для создания этой премиальной компании.</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <img src="https://via.placeholder.com/300" alt="Фото 1">
+            <img src="https://via.placeholder.com/300" alt="Фото 2">
+            <img src="https://via.placeholder.com/300" alt="Фото 3">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Poople. Все права защищены.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poople</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function(){
+            var t = localStorage.getItem('poople_theme');
+            if (t) { document.documentElement.setAttribute('data-theme', t); }
+        })();
+    </script>
+</head>
+<body>
+    <nav>
+        <div><a href="index.html">Главная</a></div>
+        <div class="nav-right">
+            <ul>
+            <li><a href="pages/blog.html">Новости</a></li>
+            <li><a href="pages/products.html">Продукты</a></li>
+            <li><a href="pages/about.html">О компании</a></li>
+            <li><a href="pages/awards.html">Награды</a></li>
+            <li><a href="pages/reviews.html">Отзывы</a></li>
+        </ul>
+            <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Переключить тему">🌙</button>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="glow-circles">
+            <span class="circle circle-1"></span>
+            <span class="circle circle-2"></span>
+            <span class="circle circle-3"></span>
+        </div>
+        <div class="hero-title">Poople</div>
+    </section>
+
+    <section class="about-section">
+        <h2>О компании Poople</h2>
+        <p>Poople - это премиальная компания, предоставляющая лучшие продукты и услуги. Мы стремимся к совершенству в каждой детали.</p>
+    </section>
+
+    <h2 class="section-heading">Популярные продукты</h2>
+    <section class="products-section" id="products-preview">
+        <!-- Products preview will be dynamically rendered here -->
+    </section>
+
+    <h2 class="section-heading">Последние новости</h2>
+    <section class="news-section" id="news-preview">
+        <!-- News preview will be dynamically rendered here -->
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Poople. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

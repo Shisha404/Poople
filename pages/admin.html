@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель админа Poople</title>
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="robots" content="noindex, nofollow">
+    <script>
+        (function(){
+            var t = localStorage.getItem('poople_theme');
+            if (t) { document.documentElement.setAttribute('data-theme', t); }
+        })();
+    </script>
+</head>
+<body>
+    <!--
+        ВАЖНО: это статический сайт без сервера, поэтому настоящей защиты
+        доступа здесь быть не может — любой, кто знает URL или откроет
+        исходный код, увидит пароль ниже. Это лишь барьер от случайных
+        посетителей, а не полноценная авторизация. Для реальной защиты
+        нужен бэкенд (например, серверная сессия/JWT) или готовый сервис
+        авторизации (Firebase Auth, Supabase Auth и т.п.).
+    -->
+    <div id="auth-gate">
+        <form id="auth-form" class="auth-card">
+            <h2>Вход в панель админа</h2>
+            <input type="password" id="admin-password" placeholder="Пароль" required style="margin-bottom:14px;">
+            <button class="button" type="submit">Войти</button>
+            <p id="auth-error" class="auth-error" style="display:none;">Неверный пароль</p>
+        </form>
+    </div>
+
+    <div id="admin-content" style="display:none;">
+        <nav>
+            <div><a href="../index.html">Главная</a></div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="blog.html">Новости</a></li>
+                    <li><a href="products.html">Продукты</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="awards.html">Награды</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Переключить тему">🌙</button>
+            </div>
+        </nav>
+
+        <section class="hero-section">
+            <div class="glow-circles">
+                <span class="circle circle-1"></span>
+                <span class="circle circle-2"></span>
+                <span class="circle circle-3"></span>
+            </div>
+            <div class="hero-title">Панель админа Poople</div>
+        </section>
+
+        <section class="admin-section">
+            <div>
+                <h2>Добавить новый продукт</h2>
+                <form id="product-form">
+                    <input type="text" name="name" placeholder="Название продукта" required>
+                    <textarea name="description" placeholder="Описание продукта" required></textarea>
+                    <input type="number" name="price" placeholder="Цена" required>
+                    <input type="url" name="image" placeholder="Ссылка на фото" required>
+                    <button class="button">Добавить</button>
+                </form>
+            </div>
+
+            <div>
+                <h2>Добавить новость</h2>
+                <form id="news-form">
+                    <input type="text" name="title" placeholder="Заголовок новости" required>
+                    <textarea name="content" placeholder="Текст новости" required></textarea>
+                    <input type="date" name="date" required>
+                    <button class="button">Добавить</button>
+                </form>
+            </div>
+
+            <div>
+                <h2>Добавить отзыв</h2>
+                <form id="review-form">
+                    <select name="productId" required>
+                        <!-- Filled dynamically with the product list -->
+                    </select>
+                    <input type="text" name="author" placeholder="Имя автора" required>
+                    <textarea name="content" placeholder="Текст отзыва" required></textarea>
+                    <select name="rating" required>
+                        <option value="★★★★★">★★★★★</option>
+                        <option value="★★★★☆">★★★★☆</option>
+                        <option value="★★★☆☆">★★★☆☆</option>
+                        <option value="★★☆☆☆">★★☆☆☆</option>
+                        <option value="★☆☆☆☆">★☆☆☆☆</option>
+                    </select>
+                    <input type="date" name="date" required>
+                    <button class="button">Добавить</button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Poople. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        // Basic client-side gate — deters casual visitors only, see note above.
+        const ADMIN_PASSWORD = 'poople2023';
+
+        document.getElementById('auth-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const entered = document.getElementById('admin-password').value;
+            if (entered === ADMIN_PASSWORD) {
+                document.getElementById('auth-gate').style.display = 'none';
+                document.getElementById('admin-content').style.display = 'block';
+                populateProductSelect();
+            } else {
+                document.getElementById('auth-error').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
